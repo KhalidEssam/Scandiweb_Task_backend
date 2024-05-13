@@ -1,0 +1,18 @@
+{
+    "name": "lenovo/gql-test",
+    "description": "getting started with graphql",
+    "require-dev": {
+        "webonyx/graphql-php": "^15.11"
+    },
+    "authors": [
+        {
+            "name": "Khaled",
+            "email": "khaledesam384@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "classmap": ["models",
+                    "graphql"]
+    }
+}

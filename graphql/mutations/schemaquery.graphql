@@ -1,0 +1,22 @@
+query {
+  categories {
+    id
+    name
+  }
+  products {
+    id
+    name
+    inStock
+    gallery
+    description
+    category
+    brand
+    prices {
+      amount
+      currency {
+        label
+        symbol
+      }
+    }
+  }
+}
