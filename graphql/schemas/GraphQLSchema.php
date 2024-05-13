@@ -14,10 +14,6 @@ abstract class GraphQLSchema {
         $this->queryResolvers = $queryResolvers;
     }
 
-
-
-
-
     abstract public function getQueryType();
 }
 

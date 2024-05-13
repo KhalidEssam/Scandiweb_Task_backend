@@ -7,9 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AbstractQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
+    'App\\ORMEntities\\CategoryEntity' => $baseDir . '/models/CategoryEntity.php',
+    'App\\ORMEntities\\Products' => $baseDir . '/models/Products.php',
     'AttributeQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'AttributeSetType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
     'BaseType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
+    'CategoryEntity' => $baseDir . '/models/ORMEntities/Product.php',
     'CategoryNameQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'CategoryQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'CategoryType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
@@ -20,8 +23,12 @@ return array(
     'GeneralSchema' => $baseDir . '/graphql/schemas/GraphQLSchema.php',
     'GraphQLSchema' => $baseDir . '/graphql/schemas/GraphQLSchema.php',
     'ItemType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
+    'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+    'PriceEntity' => $baseDir . '/models/ORMEntities/Product.php',
     'PriceQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'PriceType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
+    'Product' => $baseDir . '/models/ORMEntities/Product.php',
     'ProductQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'ProductType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
+    '©' => $vendorDir . '/symfony/cache/Traits/ValueWrapper.php',
 );
