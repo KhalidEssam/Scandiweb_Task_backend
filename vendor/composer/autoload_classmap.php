@@ -7,8 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AbstractQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
-    'App\\ORMEntities\\CategoryEntity' => $baseDir . '/models/CategoryEntity.php',
-    'App\\ORMEntities\\Products' => $baseDir . '/models/Products.php',
     'AttributeQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'AttributeSetType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
     'BaseType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
@@ -30,5 +28,4 @@ return array(
     'Product' => $baseDir . '/models/ORMEntities/Product.php',
     'ProductQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'ProductType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
-    '©' => $vendorDir . '/symfony/cache/Traits/ValueWrapper.php',
 );

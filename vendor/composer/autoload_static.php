@@ -23,11 +23,9 @@ class ComposerStaticInitdb29de9e8241174ff00bbb961abbc189
             'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\Service\\' => 26,
-            'Symfony\\Contracts\\Cache\\' => 24,
             'Symfony\\Component\\VarExporter\\' => 30,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
-            'Symfony\\Component\\Cache\\' => 24,
         ),
         'P' => 
         array (
@@ -74,10 +72,6 @@ class ComposerStaticInitdb29de9e8241174ff00bbb961abbc189
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
         ),
-        'Symfony\\Contracts\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/cache-contracts',
-        ),
         'Symfony\\Component\\VarExporter\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-exporter',
@@ -89,10 +83,6 @@ class ComposerStaticInitdb29de9e8241174ff00bbb961abbc189
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
-        ),
-        'Symfony\\Component\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/cache',
         ),
         'Psr\\Log\\' => 
         array (
@@ -150,8 +140,6 @@ class ComposerStaticInitdb29de9e8241174ff00bbb961abbc189
 
     public static $classMap = array (
         'AbstractQueryResolver' => __DIR__ . '/../..' . '/models/Resolvers/AbstractQueryResolver.php',
-        'App\\ORMEntities\\CategoryEntity' => __DIR__ . '/../..' . '/models/CategoryEntity.php',
-        'App\\ORMEntities\\Products' => __DIR__ . '/../..' . '/models/Products.php',
         'AttributeQueryResolver' => __DIR__ . '/../..' . '/models/Resolvers/AbstractQueryResolver.php',
         'AttributeSetType' => __DIR__ . '/../..' . '/graphql/schemas/TypeDefinition.php',
         'BaseType' => __DIR__ . '/../..' . '/graphql/schemas/TypeDefinition.php',
@@ -173,7 +161,6 @@ class ComposerStaticInitdb29de9e8241174ff00bbb961abbc189
         'Product' => __DIR__ . '/../..' . '/models/ORMEntities/Product.php',
         'ProductQueryResolver' => __DIR__ . '/../..' . '/models/Resolvers/AbstractQueryResolver.php',
         'ProductType' => __DIR__ . '/../..' . '/graphql/schemas/TypeDefinition.php',
-        '©' => __DIR__ . '/..' . '/symfony/cache/Traits/ValueWrapper.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
