@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AbstractQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
+    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'AttributeQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'AttributeSetType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
     'BaseType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
@@ -22,10 +23,15 @@ return array(
     'GraphQLSchema' => $baseDir . '/graphql/schemas/GraphQLSchema.php',
     'ItemType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
     'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+    'PhpToken' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
     'PriceEntity' => $baseDir . '/models/ORMEntities/Product.php',
     'PriceQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'PriceType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
     'Product' => $baseDir . '/models/ORMEntities/Product.php',
     'ProductQueryResolver' => $baseDir . '/models/Resolvers/AbstractQueryResolver.php',
     'ProductType' => $baseDir . '/graphql/schemas/TypeDefinition.php',
+    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+    '©' => $vendorDir . '/symfony/cache/Traits/ValueWrapper.php',
 );

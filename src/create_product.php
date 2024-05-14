@@ -4,20 +4,30 @@
 require_once __DIR__ . '/../bootstrap.php';
 
 
-$product = new Product();
-// $product->setName('$argv[1]');
-$product->setId('nast_niky_shoes');
-$product->setName('nast niky shoes');
-$product->setInStock(true);
-$product->setDescription('nast niky shoes');
-$product->setBrand('nast niky');
+// $product = new Product();
+// // $product->setName('$argv[1]');
+// $product->setId('X_BOX SERIES S');
+// $product->setName('X_BOX SERIES S');
+// $product->setInStock(true);
+// $product->setDescription('X_BOX SERIES S');
+// $product->setBrand('X_BOX');
 
 
+
+// // $entityManager->persist($product);
 
 // $entityManager->persist($product);
-
-$entityManager->persist($product);
-$entityManager->flush();
+// $entityManager->flush();
 
 
-echo "Created Product with name " . $product->getId() . "\n";
+// echo "Created Product with name " . $product->getId() . "\n";
+
+$query = $entityManager->createQuery('SELECT p FROM CategoryEntity p');
+
+// Execute the query
+$products = $query->getResult();
+
+
+foreach ($products as $product) {
+    echo $product->getName() . "\n";
+}

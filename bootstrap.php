@@ -12,6 +12,10 @@ use Doctrine\ORM\ORMSetup;
 require_once __DIR__ . '/vendor/autoload.php';
 
 
+$dotenv = DotenvVault\DotenvVault::createImmutable(__DIR__);
+$dotenv->safeLoad();
+
+
 
 // $database = Database::getInstance();
 // $pdo = $database->getConnection();
@@ -19,14 +23,17 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Doctrine DBAL configuration
 $config = new Configuration();
 
+
+
+
 // Create the database connection
 $connectionParams = [
 // 'pdo' => $pdo,
-'host' => 'localhost',
-'user' => 'khaledesam',
-'password' => 'Kh1597562016',
-'dbname' => 'dummy_ecommerce',
-'driver' => 'pdo_mysql', // Specify the PDO driver for MySQL
+'host' => $_SERVER['DB_HOST'],
+'user' => $_SERVER['DB_USERNAME'],
+'password' => $_SERVER['DB_PASSWORD'],
+'dbname' => $_SERVER['DB_DATABASE'],
+'driver' => $_SERVER['DB_DRIVER'], // Specify the PDO driver for MySQL
 ];
 
 

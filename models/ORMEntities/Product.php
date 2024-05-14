@@ -1,5 +1,9 @@
 <?php
 
+
+// namespace App\Models\ORMEntities;
+
+
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -24,6 +28,21 @@ class CategoryEntity
     private $name;
 
     // Getters and setters
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
 }
 
 
