@@ -12,7 +12,7 @@
         <many-to-one field="attribute_id" target-entity="AttributeEntity" fetch="EAGER">
             <join-column name="attribute_id" referenced-column-name="id"/>
         </many-to-one>
-        <field name="displayValue" column="display_value" type="string"/>
+        <field name="displayValue" column="displayValue" type="string"/>
     </entity>
 
 </doctrine-mapping>

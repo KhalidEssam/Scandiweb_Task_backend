@@ -21,8 +21,6 @@ class GeneralSchema extends GraphQLSchema {
     
     public function getQueryType()
     {
-        $newpriceType = new PriceType();
-        $priceObjectType = $newpriceType->getType();
 
         $newcategoryType = new CategoryType();
         $categoryObjectType = $newcategoryType->getType();
@@ -38,13 +36,13 @@ class GeneralSchema extends GraphQLSchema {
         'type' => Type::listOf($categoryObjectType),
         'resolve' => function ($parent, $args, $context) {
             
-        return $this->queryResolvers['Category']->resolve('0');
+        return $this->queryResolvers['Category']->resolve();
         }
         ],
         'products' => [
         'type' => Type::listOf($productObjectType),
         'resolve' => function ($parent, $args, $context) {
-        return $this->queryResolvers['Product']->resolve(0);
+        return $this->queryResolvers['Product']->resolve();
         }
         ],
         ],

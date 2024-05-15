@@ -27,7 +27,7 @@ class product_image
     /**
     * @ORM\Column(type="string")
     */
-    private $image_url;
+    private $url;
 
 
 }

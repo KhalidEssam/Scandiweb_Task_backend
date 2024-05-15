@@ -12,7 +12,7 @@
         <many-to-one field="product_id" target-entity="Product" fetch="EAGER">
             <join-column name="product_id" referenced-column-name="id"/>
         </many-to-one>
-        <field name="image_url" column="image_url" type="string"/>
+        <field name="url" column="url" type="string"/>
     </entity>
 
 </doctrine-mapping>
