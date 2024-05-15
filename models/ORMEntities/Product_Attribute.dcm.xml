@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Product_Attribute" table="product_attribute">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <many-to-one field="attribute_id" target-entity="AttributeEntity" fetch="EAGER">
+            <join-column name="attribute_id" referenced-column-name="id"/>
+        </many-to-one>
+        <many-to-one field="product_id" target-entity="Product" fetch="EAGER">
+            <join-column name="product_id" referenced-column-name="id"/>
+        </many-to-one>
+        <many-to-one field="attribute_item_id" target-entity="AttributeItem" fetch="EAGER">
+            <join-column name="attribute_item_id" referenced-column-name="id"/>
+        </many-to-one>
+    </entity>
+
+</doctrine-mapping>

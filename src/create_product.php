@@ -22,12 +22,14 @@ require_once __DIR__ . '/../bootstrap.php';
 
 // echo "Created Product with name " . $product->getId() . "\n";
 
-$query = $entityManager->createQuery('SELECT p FROM CategoryEntity p');
+$query = $entityManager->createQuery('SELECT p FROM PriceEntity p');
 
 // Execute the query
 $products = $query->getResult();
 
 
 foreach ($products as $product) {
-    echo $product->getName() . "\n";
+    // echo $product->getlabel() .  $product->getSymbol()  . "\n";
+    echo $product->getAmount(). "\n";
+
 }

@@ -1,77 +1,7 @@
 <?php
 
 
-// namespace App\Models\ORMEntities;
-
-
 use Doctrine\ORM\Mapping as ORM;
-
-
-
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="categories")
- */
-class CategoryEntity
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $name;
-
-    // Getters and setters
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-}
-
-
-
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="prices")
- */
-class PriceEntity
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
-    private $amount;
-
-    // Getters and setters for properties...
-}
-
-
-
-
 
 
 /**
@@ -111,7 +41,7 @@ class Product {
      * @ORM\ManyToOne(targetEntity="CategoryEntity")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    private $category;
+    private $category_id;
 
     /**
      * @ORM\ManyToOne(targetEntity="PriceEntity")
@@ -171,14 +101,14 @@ class Product {
         $this->brand = $brand;
     }
 
-    public function getCategory(): ?CategoryEntity
+    public function getCategory(): ?int
     {
-        return $this->category;
+        return $this->category_id ? $this->category_id->getId() : null;
     }
 
     public function setCategory(?CategoryEntity $category): void
     {
-        $this->category = $category;
+        $this->category_id = $category;
     }
 
     public function getPrice(): ?PriceEntity
@@ -191,10 +121,3 @@ class Product {
         $this->price = $price;
     }
 }
-
-
-// $product = new Product();
-// $product->setName('Product 1');
-// $product->setInStock(true);
-// $product->setDescription('Product 1 description');
-// $product->setBrand('Brand 1');
