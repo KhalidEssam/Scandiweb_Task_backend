@@ -1,14 +1,16 @@
 <?php
 
+require_once __DIR__ . '/../bootstrap.php';
+
 class Database {
     private static $instance = null;
     private $pdo;
 
     private function __construct() {
-        $host = 'localhost';
-        $dbname = 'ecommerce';
-        $username = 'root';
-        $password = '';
+        $host = $_SERVER['DB_HOST'];
+        $dbname = $_SERVER['DB_NAME'];
+        $username = $_SERVER['DB_USER'];
+        $password = $_SERVER['DB_PASS'];
 
         try {
             $this->pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
