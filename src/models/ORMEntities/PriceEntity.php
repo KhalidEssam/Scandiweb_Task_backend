@@ -39,5 +39,15 @@ public function get_Currency_id(): ? Currency
 return $this->currency_id ? $this->currency_id->getId() : null;
 }
 
+public function setAmount(float $amount): void
+{
+    $this->amount = $amount;
+}
+
+public function set_Currency_id(Currency $currency_id): void
+{
+    $this->currency_id = $currency_id;
+}
+
 
 }

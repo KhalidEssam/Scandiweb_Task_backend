@@ -30,4 +30,30 @@ class product_image
     private $url;
 
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getProductId()
+    {
+        return $this->product_id;
+    }
+
+    public function setProductId($product_id)
+    {
+        $this->product_id = $product_id;                            
+    }
+
+    public function getUrl()        
+    {
+        return $this->url;
+    }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+
 }

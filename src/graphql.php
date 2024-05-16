@@ -11,15 +11,15 @@ try {
 // database connection class
 $database = Database::getInstance();
 $pdo = $database->getConnection();
-
+// print_r($entityManager);
 // Resolvers array
 $queryResolvers = [
-'Category' => new CategoryQueryResolver($pdo),
-'Product' => new ProductQueryResolver($pdo),
-'Gallery' => new GalleryQueryResolver($pdo),
-'CategoryName' => new CategoryNameQueryResolver($pdo),
-'Price' => new PriceQueryResolver($pdo),
-'Attribute' => new AttributeQueryResolver($pdo)
+'Category' => new CategoryQueryResolver( $entityManager ),
+'Product' => new ProductQueryResolver( $entityManager ),
+'Gallery' => new GalleryQueryResolver( $entityManager ),
+'CategoryName' => new CategoryNameQueryResolver( $entityManager ),
+'Price' => new PriceQueryResolver( $entityManager ),
+'Attribute' => new AttributeQueryResolver( $entityManager )
 ];
 
 $server = new GraphQLServer($pdo);
@@ -27,7 +27,7 @@ $GraphQLSchema = new GeneralSchema($queryResolvers);
 $queryType = $GraphQLSchema->getQueryType();
 $server->createSchema($queryType);
 $server->handleRequest();
-} catch (\Exception $e) {
+} catch (Exception $e) {
 // Handle exceptions
 header('Content-Type: application/json');
 $error = FormattedError::createFromException($e);

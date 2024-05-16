@@ -1,5 +1,5 @@
 <?php
-class AttributeQueryResolver extends AbstractQueryResolver {
+class PDOPDORAttributeQueryResolver extends PDOAbstractQueryResolver {
     public function resolve($productId) {
         $stmt = $this->pdo->prepare('
         SELECT

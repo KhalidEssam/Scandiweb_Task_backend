@@ -34,20 +34,27 @@ private $symbol;
 
 public function getId(): ?int
 {
-return $this->id;
+    return $this->id;
 }
 
 public function getlabel(): ?string
 {
-return $this->label;
+    return $this->label;
 }
 
 public function setlabel(string $label): void
 {
-$this->label = $label;
+    $this->label = $label;
 }
+
 public function getSymbol(): ?string
 {
-return $this->symbol;
+    return $this->symbol;
 }
+
+public function setSymbol(string $symbol): void
+{
+    $this->symbol = $symbol;
+}
+
 }

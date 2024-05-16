@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../../bootstrap.php';
 
 class Database {
     private static $instance = null;
@@ -8,7 +8,7 @@ class Database {
 
     private function __construct() {
         $host = $_SERVER['DB_HOST'];
-        $dbname = $_SERVER['DB_NAME'];
+        $dbname = $_SERVER['DB_DATABASE'];
         $username = $_SERVER['DB_USER'];
         $password = $_SERVER['DB_PASS'];
 

@@ -44,12 +44,12 @@ $connectionParams = [
 
 // Set up Doctrine ORM
 $config = ORMSetup::createXMLMetadataConfiguration(
-paths: array(__DIR__."/models/ORMEntities/"),
+paths: array(__DIR__."/src/models/ORMEntities/"),
 isDevMode: false,
 );
 
 // Create the database connection
 $connection = DriverManager::getConnection($connectionParams, $config);
-
+$message = "Connected to the database successfully!";
 // Create the EntityManager
 $entityManager = new EntityManager($connection, $config);

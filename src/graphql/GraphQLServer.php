@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../../bootstrap.php';
 
 use GraphQL\Server\StandardServer;
 use GraphQL\Type\Schema;

@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class AbstractQueryResolver {
+abstract class PDOAbstractQueryResolver {
     protected $pdo;
 
     public function __construct(PDO $pdo) {

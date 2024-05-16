@@ -1,5 +1,5 @@
 <?php
-class GalleryQueryResolver extends AbstractQueryResolver {
+class PDOGalleryQueryResolver extends PDOAbstractQueryResolver {
     public function resolve($productId) {
         $stmt = $this->pdo->prepare('SELECT url FROM product_image WHERE product_id = :product_id');
         $stmt->execute(['product_id' => $productId]);

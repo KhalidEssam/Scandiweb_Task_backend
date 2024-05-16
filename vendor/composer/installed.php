@@ -3,7 +3,7 @@
         'name' => 'lenovo/gql-test',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'f4ff09dc49e8cab9380060b76149bc2cecc155ea',
+        'reference' => 'fd620d5aa616ff8db063f4692ca333108692799c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -112,7 +112,7 @@
         'lenovo/gql-test' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'f4ff09dc49e8cab9380060b76149bc2cecc155ea',
+            'reference' => 'fd620d5aa616ff8db063f4692ca333108692799c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

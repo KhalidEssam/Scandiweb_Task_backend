@@ -1,5 +1,5 @@
 <?php
-class PriceQueryResolver extends AbstractQueryResolver {
+class PDOPriceQueryResolver extends PDOAbstractQueryResolver {
     public function resolve($priceId) {
         // echo $priceId;
         $stmt = $this->pdo->prepare('SELECT
