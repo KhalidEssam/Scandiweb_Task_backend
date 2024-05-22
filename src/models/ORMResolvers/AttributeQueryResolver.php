@@ -1,41 +1,67 @@
 <?php
 
-
 class AttributeQueryResolver extends AbstractQueryResolver {
-    
 
     public function resolve($productId) {
+        // Execute the query
+        // $query = $this->entityManager->createQuery('
+        //     SELECT a.name AS id, ai.displayValue AS displayValue, ai.value AS value,
+        //     FROM Product_Attribute pa
+        //     JOIN pa.attribute_id a
+        //     JOIN pa.attribute_item_id ai
+        //     WHERE pa.product_id = :product_id
+        // ')->setParameter('product_id', $productId);
         $query = $this->entityManager->createQuery('
-        SELECT a.name AS id, ai.displayValue AS attribute_item_value
+        SELECT a.name AS id, ai.displayValue AS attribute_item_value , ai.value AS attribute_value
         FROM Product_Attribute pa
         JOIN pa.attribute_id a
         JOIN pa.attribute_item_id ai
         WHERE pa.product_id = :product_id
         ')->setParameter('product_id', $productId);
+        
         $result = $query->getResult();
-        
-        // print_r($result);
 
-        $id = '';
+        
+        // Initialize an empty array to hold the grouped data
+        $ids = [];
         $values = [];
+        $displayValues = [];
         
-        // Group attributes with the same ID together
+        // Group attributes by ID
         foreach ($result as $attribute) {
-        $id = $attribute['id'];
-        $value = $attribute['attribute_item_value'];
-        
-        $values[] = $value;
-        }
-        
-        // Now $ids contains all the unique attribute IDs and $values contains the corresponding values
-        $groupedData = [$id, array_values($values)];
-        $keys = ['id', 'value'];
-        $groupedData = array_combine($keys, $groupedData);
 
-        $values = array_values($groupedData['value']);
-        $groupedData = ['id' => $id, 'value' => $values];
+            // print_r($attribute);
+            $id = $attribute['id'];
+            $value = $attribute['attribute_value'];
+            $displayValue = $attribute['attribute_item_value'];
+            // echo $displayValue;
+            
+            $ids[] = $id;
+            $values[] = $value;
+            $displayValues[] = $displayValue;
+    
+        }
+
+        $groupedData = [array_values($ids), array_values($values) , array_values($displayValues)];
+        $keys = ['id', 'value', 'displayValue'];
+        $groupedData = array_combine($keys, $groupedData);
+        // print_r($groupedData);
+
+        
+        $values = array_values($groupedData['value']);  
+        $displayValues = array_values($groupedData['displayValue']);
+
+        $ids = array_values($groupedData['id']);
+
+
+        $groupedData = ['id' => $ids, 'value' => $values, 'displayValue' => $displayValues];
+
+        // print_r($groupedData);
+
         return $groupedData;
     }
+
+
 }
 
 ?>

@@ -13,6 +13,8 @@
             <join-column name="attribute_id" referenced-column-name="id"/>
         </many-to-one>
         <field name="displayValue" column="displayValue" type="string"/>
+        <field name="value" column="value" type="string"/>
+
     </entity>
 
 </doctrine-mapping>

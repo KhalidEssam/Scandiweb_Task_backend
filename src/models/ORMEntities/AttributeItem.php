@@ -27,5 +27,11 @@ private $attribute_id;
 */
 private $displayValue;
 
+/**
+* @ORM\Column(type="string")
+*/
+private $value;
+
+
 // Getters and setters for id, attribute, and value
 }

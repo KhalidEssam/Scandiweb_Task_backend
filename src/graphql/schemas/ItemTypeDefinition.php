@@ -13,6 +13,7 @@ class ItemType extends BaseType
         $fields = [
             'id' => Type::string(),
             'displayValue' => Type::string(),
+            'value' => Type::string(),
         ];
 
         parent::__construct($name, $fields);

@@ -7,6 +7,12 @@ require_once __DIR__ . '/../bootstrap.php';
 use GraphQL\Server\StandardServer;
 use GraphQL\Type\Schema;
 
+// Allow requests from any origin
+header("Access-Control-Allow-Origin: *");
+
+// Allow the Content-Type header in requests
+header("Access-Control-Allow-Headers: Content-Type");
+
 try {
 // database connection class
 $database = Database::getInstance();
@@ -14,12 +20,12 @@ $pdo = $database->getConnection();
 // print_r($entityManager);
 // Resolvers array
 $queryResolvers = [
-'Category' => new CategoryQueryResolver( $entityManager ),
-'Product' => new ProductQueryResolver( $entityManager ),
-'Gallery' => new GalleryQueryResolver( $entityManager ),
-'CategoryName' => new CategoryNameQueryResolver( $entityManager ),
-'Price' => new PriceQueryResolver( $entityManager ),
-'Attribute' => new AttributeQueryResolver( $entityManager )
+    'Category' => new CategoryQueryResolver( $entityManager ),
+    'Product' => new ProductQueryResolver( $entityManager ),
+    'Gallery' => new GalleryQueryResolver( $entityManager ),
+    'CategoryName' => new CategoryNameQueryResolver( $entityManager ),
+    'Price' => new PriceQueryResolver( $entityManager ),
+    'Attribute' => new AttributeQueryResolver( $entityManager )
 ];
 
 $server = new GraphQLServer($pdo);

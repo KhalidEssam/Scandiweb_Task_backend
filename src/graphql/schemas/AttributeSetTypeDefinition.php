@@ -15,13 +15,18 @@ class AttributeSetType extends BaseType
             'items' => [
                 'type' => Type::listOf((new ItemType())->getType()),
                 'resolve' => function ($parent, $args, $context) {
+                    print_r($parent);
                     $items = [];
                     foreach ($parent['items'] as $item) {
-                        $itemObject = [
-                            'id' => $item['id'],
-                            'displayValue' => $item['id'],
-                        ];
-                        $items[] = $itemObject;
+                    // Construct each item object
+                    $itemObject = [
+                    'id' => $item['id'],
+                    'displayValue' => $item['displayValue'],
+                    'value' => $item['value']
+                    ];
+                    
+                    // Append the item object to the items array
+                    $items[] = $itemObject;
                     }
                     return $items;
                 }

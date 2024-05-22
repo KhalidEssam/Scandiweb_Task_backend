@@ -39,15 +39,31 @@ return $this->queryResolvers['Price']->resolve($product['price_id']);
 },
 ],
 'attributes' => [
-'type' => (new AttributeSetType())->getType(),
+'type' => Type::listOf((new AttributeSetType())->getType()),
 'resolve' => function ($product, $args ) {
 $attributesData = $this->queryResolvers['Attribute']->resolve($product['id']);
-return [
-'id' => $attributesData['id'],
-'items' => array_map(function ($value) {
-return ['id' => $value];
-}, $attributesData['value'])
+$attributes = [];
+
+// Group attributes by ID
+$groupedAttributes = [];
+foreach ($attributesData['id'] as $key => $id) {
+$groupedAttributes[$id][] = [
+'displayValue' => $attributesData['displayValue'][$key],
+'value' => $attributesData['value'][$key],
+'id' => $attributesData['displayValue'][$key], // Assuming 'id' is similar to 'displayValue'
 ];
+}
+
+// Construct AttributeSet for each group
+foreach ($groupedAttributes as $id => $items) {
+$attributeSet = [
+'id' => $id,
+'items' => $items,
+];
+$attributes[] = $attributeSet;
+}
+
+return $attributes;
 },
 ],
 ];
