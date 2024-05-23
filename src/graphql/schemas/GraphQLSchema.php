@@ -9,12 +9,16 @@ use GraphQL\Type\Definition\Type;
 
 abstract class GraphQLSchema {
     protected $queryResolvers;
-    public function __construct(array $queryResolvers)
+    protected $mutationResolvers;
+
+    public function __construct(array $queryResolvers , array $mutationResolvers ) 
     {
         $this->queryResolvers = $queryResolvers;
+        $this->mutationResolvers = $mutationResolvers;
     }
 
     abstract public function getQueryType();
+    abstract public function getMutationType();
 }
 
 class GeneralSchema extends GraphQLSchema {
@@ -47,6 +51,11 @@ class GeneralSchema extends GraphQLSchema {
         ],
         ],
         ]);
+    }
+    public function getMutationType()
+    {
+    $newMutationType = new MutationType($this->mutationResolvers);
+    return $newMutationType->getType();
     }
 
 }

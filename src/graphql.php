@@ -14,28 +14,36 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 
 try {
-// database connection class
-$database = Database::getInstance();
-$pdo = $database->getConnection();
-// print_r($entityManager);
-// Resolvers array
-$queryResolvers = [
-    'Category' => new CategoryQueryResolver( $entityManager ),
-    'Product' => new ProductQueryResolver( $entityManager ),
-    'Gallery' => new GalleryQueryResolver( $entityManager ),
-    'CategoryName' => new CategoryNameQueryResolver( $entityManager ),
-    'Price' => new PriceQueryResolver( $entityManager ),
-    'Attribute' => new AttributeQueryResolver( $entityManager )
-];
+    // database connection class
+    $database = Database::getInstance();
+    $pdo = $database->getConnection();
 
-$server = new GraphQLServer($pdo);
-$GraphQLSchema = new GeneralSchema($queryResolvers);
-$queryType = $GraphQLSchema->getQueryType();
-$server->createSchema($queryType);
-$server->handleRequest();
+    // Resolvers array
+    $queryResolvers = [
+        'Category' => new CategoryQueryResolver($entityManager),
+        'Product' => new ProductQueryResolver($entityManager),
+        'Gallery' => new GalleryQueryResolver($entityManager),
+        'CategoryName' => new CategoryNameQueryResolver($entityManager),
+        'Price' => new PriceQueryResolver($entityManager),
+        'Attribute' => new AttributeQueryResolver($entityManager)
+    ];
+
+    $mutationResolvers = [
+        'createOrder' => new CreateOrder($entityManager),
+    ];
+
+    $GraphQLSchema = new GeneralSchema($queryResolvers, $mutationResolvers);
+
+    $queryType = $GraphQLSchema->getQueryType();
+    $mutationType = $GraphQLSchema->getMutationType();
+
+    $server = new GraphQLServer($pdo);
+    $server->createSchema($queryType, $mutationType);
+    $server->handleRequest();
+
 } catch (Exception $e) {
-// Handle exceptions
-header('Content-Type: application/json');
-$error = FormattedError::createFromException($e);
-echo json_encode(['errors' => [$error]]);
+    // Handle exceptions
+    header('Content-Type: application/json');
+    $error = FormattedError::createFromException($e);
+    echo json_encode(['errors' => [$error]]);
 }

@@ -15,7 +15,6 @@ class AttributeSetType extends BaseType
             'items' => [
                 'type' => Type::listOf((new ItemType())->getType()),
                 'resolve' => function ($parent, $args, $context) {
-                    print_r($parent);
                     $items = [];
                     foreach ($parent['items'] as $item) {
                     // Construct each item object

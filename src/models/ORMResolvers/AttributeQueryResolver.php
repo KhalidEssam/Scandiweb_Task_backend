@@ -3,14 +3,6 @@
 class AttributeQueryResolver extends AbstractQueryResolver {
 
     public function resolve($productId) {
-        // Execute the query
-        // $query = $this->entityManager->createQuery('
-        //     SELECT a.name AS id, ai.displayValue AS displayValue, ai.value AS value,
-        //     FROM Product_Attribute pa
-        //     JOIN pa.attribute_id a
-        //     JOIN pa.attribute_item_id ai
-        //     WHERE pa.product_id = :product_id
-        // ')->setParameter('product_id', $productId);
         $query = $this->entityManager->createQuery('
         SELECT a.name AS id, ai.displayValue AS attribute_item_value , ai.value AS attribute_value
         FROM Product_Attribute pa

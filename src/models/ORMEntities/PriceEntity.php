@@ -29,6 +29,11 @@ private $currency_id;
 
 // Getters and setters for id, amount, and currency
 
+public function getId(): ?int
+{
+    return $this->id;
+}
+
 public function getAmount(): ?float
 {
     return $this->amount; 

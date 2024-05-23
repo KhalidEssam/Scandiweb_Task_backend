@@ -34,4 +34,45 @@ private $value;
 
 
 // Getters and setters for id, attribute, and value
+
+    public function getId()
+    {
+        return $this->id;   
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getAttributeId()
+    {        
+        return $this->attribute_id;
+    }
+
+    public function setAttributeId($attribute_id)
+    {
+        $this->attribute_id = $attribute_id;
+    }
+
+    public function getDisplayValue()
+    {
+        return $this->displayValue;
+    }
+
+    public function setDisplayValue($displayValue)
+    {
+        $this->displayValue = $displayValue;
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }   
+
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
 }

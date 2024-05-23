@@ -35,22 +35,38 @@ require_once __DIR__ . '/../bootstrap.php';
 // }
 
 $productId = 'nast_niky_shoes';
+// // $query = $entityManager->createQuery('
+// // SELECT a.name AS id, ai.displayValue AS displayValue, ai.value AS value,
+// // FROM Product_Attribute pa
+// // JOIN pa.attribute_id a
+// // JOIN pa.attribute_item_id ai
+// // WHERE pa.product_id = :product_id
+// // ')->setParameter('product_id', $productId);
+
 // $query = $entityManager->createQuery('
-// SELECT a.name AS id, ai.displayValue AS displayValue, ai.value AS value,
+// SELECT a.name AS id, ai.displayValue AS attribute_item_value , ai.value AS attribute_value
 // FROM Product_Attribute pa
 // JOIN pa.attribute_id a
 // JOIN pa.attribute_item_id ai
 // WHERE pa.product_id = :product_id
 // ')->setParameter('product_id', $productId);
 
-$query = $entityManager->createQuery('
-SELECT a.name AS id, ai.displayValue AS attribute_item_value , ai.value AS attribute_value
-FROM Product_Attribute pa
-JOIN pa.attribute_id a
-JOIN pa.attribute_item_id ai
-WHERE pa.product_id = :product_id
-')->setParameter('product_id', $productId);
+// $result = $query->getResult();
 
-$result = $query->getResult();
+// print_r($result);
 
-print_r($result);
+$order = new OrderEntity();
+$order->setTotalPrice(400.00);
+// Set other properties of the order entity as needed
+$entityManager->persist($order);
+
+// Create OrderDetailEntity for each item
+$orderDetail = new OrderDetailEntity();
+$orderDetail->setOrder($order);
+$product = $entityManager->getRepository(Product::class)->find($productId);
+$orderDetail->setProduct($product);
+// Set other properties of the order detail entity based on $item
+$entityManager->persist($orderDetail);
+
+
+$entityManager->flush();

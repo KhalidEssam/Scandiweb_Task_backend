@@ -11,18 +11,21 @@ class GraphQLServer
     private $queryResolvers;
     private $schema;
     private $queryType;
+    private $mutationType;
 
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
 
-    public function createSchema($queryType): void
+    public function createSchema($queryType, $mutationType): void
     {
         $this->queryType =  $queryType ;
+        $this->mutationType = $mutationType;
 
         $this->schema = new Schema([
             'query' => $this->queryType,
+            'mutation' => $this->mutationType,
         ]);
     }
 
