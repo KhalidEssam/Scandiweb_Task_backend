@@ -48,6 +48,9 @@ paths: array(__DIR__."/src/models/ORMEntities/"),
 isDevMode: false,
 );
 
+$config->setProxyDir(__DIR__."/src/proxies");
+$config->setProxyNamespace('Proxies');
+
 // Create the database connection
 $connection = DriverManager::getConnection($connectionParams, $config);
 $message = "Connected to the database successfully!";

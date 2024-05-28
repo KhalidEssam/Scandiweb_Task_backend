@@ -6,6 +6,10 @@ class CreateOrder extends AbstractQueryResolver {
 
     public function resolve($args)
     {
+        if (count($args['input']['items']) <1 || ($args['input']['totalPrice'] == null)) {
+            return ['id' => false, 'status' => 'Input is not set'];
+            throw new \Exception('Input is not set');
+        }
         $response = ['id' => false, 'status' => ''];
         
         try {
@@ -19,23 +23,31 @@ class CreateOrder extends AbstractQueryResolver {
                 // print_r($item);
                 $product = $this->entityManager->getRepository(Product::class)->findOneBy(['id' => $item['id']]);
 
-
-                foreach ($item['attributes'] as $attr) {
+                if($item['attributes'] == null) {
                     $orderDetail = new OrderDetailEntity();
                     $orderDetail->setOrder($order);
                     $orderDetail->setProduct($product);
                     $orderDetail->setCount($item['count']);
-                    
-                    $attribute = $this->entityManager->getRepository(AttributeEntity::class)->findOneBy(['name' => $attr['id']]);
-                    $selectedAttribute = $this->entityManager->getRepository(AttributeItem::class)->findOneBy([
-                        'attribute_id' => $attribute->getId(),
-                        'value' => $attr['value'],
-                    ]);
-                    if ($selectedAttribute) {
-
-                    
-                    $orderDetail->setSelectedAttribute($selectedAttribute);
                     $this->entityManager->persist($orderDetail);
+                }
+                else {
+                    foreach ($item['attributes'] as $attr) {
+                        $orderDetail = new OrderDetailEntity();
+                        $orderDetail->setOrder($order);
+                        $orderDetail->setProduct($product);
+                        $orderDetail->setCount($item['count']);
+                        
+                        $attribute = $this->entityManager->getRepository(AttributeEntity::class)->findOneBy(['name' => $attr['id']]);
+                        $selectedAttribute = $this->entityManager->getRepository(AttributeItem::class)->findOneBy([
+                            'attribute_id' => $attribute->getId(),
+                            'value' => $attr['value'],
+                        ]);
+                        if ($selectedAttribute) {
+
+                        
+                        $orderDetail->setSelectedAttribute($selectedAttribute);
+                        $this->entityManager->persist($orderDetail);
+                        }
                     }
                 }
             }
