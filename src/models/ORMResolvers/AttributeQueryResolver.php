@@ -22,11 +22,9 @@ class AttributeQueryResolver extends AbstractQueryResolver {
         // Group attributes by ID
         foreach ($result as $attribute) {
 
-            // print_r($attribute);
             $id = $attribute['id'];
             $value = $attribute['attribute_value'];
             $displayValue = $attribute['attribute_item_value'];
-            // echo $displayValue;
             
             $ids[] = $id;
             $values[] = $value;
@@ -37,7 +35,6 @@ class AttributeQueryResolver extends AbstractQueryResolver {
         $groupedData = [array_values($ids), array_values($values) , array_values($displayValues)];
         $keys = ['id', 'value', 'displayValue'];
         $groupedData = array_combine($keys, $groupedData);
-        // print_r($groupedData);
 
         
         $values = array_values($groupedData['value']);  
@@ -48,7 +45,6 @@ class AttributeQueryResolver extends AbstractQueryResolver {
 
         $groupedData = ['id' => $ids, 'value' => $values, 'displayValue' => $displayValues];
 
-        // print_r($groupedData);
 
         return $groupedData;
     }

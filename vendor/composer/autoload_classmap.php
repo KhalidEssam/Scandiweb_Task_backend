@@ -31,7 +31,7 @@ return array(
     'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
     'OrderDetailEntity' => $baseDir . '/src/models/ORMEntities/OrderDetailEntity.php',
     'OrderEntity' => $baseDir . '/src/models/ORMEntities/OrderEntity.php',
-    'OrderService' => $baseDir . '/src/models/ORMResolvers/mutationResolvers/CreateOrder.php',
+    'OrderService' => $baseDir . '/src/models/ORMResolvers/mutationResolvers/OrderService.php',
     'PDOAbstractQueryResolver' => $baseDir . '/src/models/PDOResolvers/AbstractQueryResolver.php',
     'PDOCategoryNameQueryResolver' => $baseDir . '/src/models/PDOResolvers/CategoryNameQueryResolver.php',
     'PDOCategoryQueryResolver' => $baseDir . '/src/models/PDOResolvers/CategoryQueryResolver.php',

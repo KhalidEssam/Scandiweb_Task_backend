@@ -1,7 +1,6 @@
 <?php
 class PDOPriceQueryResolver extends PDOAbstractQueryResolver {
     public function resolve($priceId) {
-        // echo $priceId;
         $stmt = $this->pdo->prepare('SELECT
         p.amount,
         c.label AS currency_name,

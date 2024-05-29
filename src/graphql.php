@@ -27,17 +27,21 @@ try {
         'Price' => new PriceQueryResolver($entityManager),
         'Attribute' => new AttributeQueryResolver($entityManager)
     ];
+
+    
+    // Mutation resolvers
     $orderservice= new OrderService($entityManager);
 
     $mutationResolvers = [
         'createOrder' => new CreateOrder($entityManager , $orderservice ),
     ];
 
+    // Schema Initialization
     $GraphQLSchema = new GeneralSchema($queryResolvers, $mutationResolvers);
 
     $queryType = $GraphQLSchema->getQueryType();
     $mutationType = $GraphQLSchema->getMutationType();
-
+    // Server Initialization
     $server = new GraphQLServer($pdo);
     $server->createSchema($queryType, $mutationType);
     $server->handleRequest();
