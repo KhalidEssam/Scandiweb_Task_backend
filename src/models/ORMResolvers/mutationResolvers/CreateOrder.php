@@ -1,70 +1,45 @@
 <?php
 
-
+use GraphQL\Error\UserError;
 
 class CreateOrder extends AbstractQueryResolver {
+    private $orderService;
+
+public function __construct(Doctrine\ORM\EntityManager $entityManager, OrderService $orderService)
+    {
+        parent::__construct($entityManager);
+        $this->orderService = $orderService;
+    }
 
     public function resolve($args)
     {
-        if (count($args['input']['items']) <1 || ($args['input']['totalPrice'] == null)) {
-            return ['id' => false, 'status' => 'Input is not set'];
-            throw new \Exception('Input is not set');
-        }
-        $response = ['id' => false, 'status' => ''];
-        
+    // Validate input before starting the transaction
+    $this->validateInput($args['input']);
+
         try {
             $this->entityManager->beginTransaction();
-            
-            $order = new OrderEntity();
-            $order->setTotalPrice($args['input']['totalPrice']);
-            $this->entityManager->persist($order);
-            
-            foreach ($args['input']['items'] as $item) {
-                // print_r($item);
-                $product = $this->entityManager->getRepository(Product::class)->findOneBy(['id' => $item['id']]);
 
-                if($item['attributes'] == null) {
-                    $orderDetail = new OrderDetailEntity();
-                    $orderDetail->setOrder($order);
-                    $orderDetail->setProduct($product);
-                    $orderDetail->setCount($item['count']);
-                    $this->entityManager->persist($orderDetail);
-                }
-                else {
-                    foreach ($item['attributes'] as $attr) {
-                        $orderDetail = new OrderDetailEntity();
-                        $orderDetail->setOrder($order);
-                        $orderDetail->setProduct($product);
-                        $orderDetail->setCount($item['count']);
-                        
-                        $attribute = $this->entityManager->getRepository(AttributeEntity::class)->findOneBy(['name' => $attr['id']]);
-                        $selectedAttribute = $this->entityManager->getRepository(AttributeItem::class)->findOneBy([
-                            'attribute_id' => $attribute->getId(),
-                            'value' => $attr['value'],
-                        ]);
-                        if ($selectedAttribute) {
-
-                        
-                        $orderDetail->setSelectedAttribute($selectedAttribute);
-                        $this->entityManager->persist($orderDetail);
-                        }
-                    }
-                }
-            }
+            $order = $this->orderService->createOrder($args['input']);
 
             $this->entityManager->flush();
             $this->entityManager->commit();
-            
-            $response['id'] = $order->getId();
-            $response['status'] = 'sucess';
+
+            return [
+            'id' => $order->getId(),
+            'status' => 'success'
+            ];
         } catch (\Exception $e) {
             $this->entityManager->rollback();
-            $response['status'] = 'Error creating orders: ' . $e->getMessage();
-            // Log the error for debugging
             error_log('Error creating orders: ' . $e->getMessage());
+            throw new UserError('Error creating order: ' . $e->getMessage());
         }
-        
-        return $response;
     }
 
+    private function validateInput($input)
+    {
+        if (count($input['items']) < 1 || ($input['totalPrice']===null)) 
+        { 
+            throw new UserError('Input is not set'); 
+        } 
+    } 
 }

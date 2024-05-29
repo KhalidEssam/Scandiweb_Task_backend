@@ -27,9 +27,10 @@ try {
         'Price' => new PriceQueryResolver($entityManager),
         'Attribute' => new AttributeQueryResolver($entityManager)
     ];
+    $orderservice= new OrderService($entityManager);
 
     $mutationResolvers = [
-        'createOrder' => new CreateOrder($entityManager),
+        'createOrder' => new CreateOrder($entityManager , $orderservice ),
     ];
 
     $GraphQLSchema = new GeneralSchema($queryResolvers, $mutationResolvers);
