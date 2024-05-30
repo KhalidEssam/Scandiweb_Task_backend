@@ -13,8 +13,8 @@ public function __construct(Doctrine\ORM\EntityManager $entityManager, OrderServ
 
     public function resolve($args)
     {
-    // Validate input before starting the transaction
-    $this->validateInput($args['input']);
+        // Validate input before starting the transaction
+        $this->validateInput($args['input']);
 
         try {
             $this->entityManager->beginTransaction();

@@ -13,7 +13,7 @@ class AttributeSetType extends BaseType
         $fields = [
             'id' => Type::string(),
             'items' => [
-                'type' => Type::listOf((new ItemType())->getType()),
+                'type' => Type::listOf((new ItemType($this->getItemFields()))->getType()),
                 'resolve' => function ($parent, $args, $context) {
                     $items = [];
                     foreach ($parent['items'] as $item) {
@@ -33,5 +33,14 @@ class AttributeSetType extends BaseType
         ];
 
         parent::__construct($name, $fields);
+    }
+
+    public static function getItemFields(): array
+    {
+        return [
+            'id' => Type::string(),
+            'displayValue' => Type::string(),
+            'value' => Type::string(),
+        ];
     }
 }

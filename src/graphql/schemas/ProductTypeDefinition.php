@@ -27,7 +27,7 @@ class ProductType extends BaseType
     'description' => Type::string(),
     'category' => [
         'type' => Type::string(),
-        'resolve' => function ($product, $args ) {
+        'resolve' => function ($product, $args) {
             return $this->queryResolvers['CategoryName']->resolve($product['category_id']);
         },
     ],

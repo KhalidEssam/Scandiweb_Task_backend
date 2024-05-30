@@ -200,6 +200,7 @@ class ComposerStaticInitdb29de9e8241174ff00bbb961abbc189
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'OrderDetailEntity' => __DIR__ . '/../..' . '/src/models/ORMEntities/OrderDetailEntity.php',
         'OrderEntity' => __DIR__ . '/../..' . '/src/models/ORMEntities/OrderEntity.php',
+        'OrderMutationType' => __DIR__ . '/../..' . '/src/graphql/mutations/OrderMutationType.php',
         'OrderService' => __DIR__ . '/../..' . '/src/graphql/ORMResolvers/mutationResolvers/OrderService.php',
         'PDOAbstractQueryResolver' => __DIR__ . '/../..' . '/src/graphql/PDOResolvers/AbstractQueryResolver.php',
         'PDOCategoryNameQueryResolver' => __DIR__ . '/../..' . '/src/graphql/PDOResolvers/CategoryNameQueryResolver.php',

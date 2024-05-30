@@ -34,27 +34,27 @@ class GeneralSchema extends GraphQLSchema {
 
 
         return new ObjectType([
-        'name' => 'Query',
-        'fields' => [
-        'categories' => [
-        'type' => Type::listOf($categoryObjectType),
-        'resolve' => function ($parent, $args, $context) {
-            
-        return $this->queryResolvers['Category']->resolve();
-        }
-        ],
-        'products' => [
-        'type' => Type::listOf($productObjectType),
-        'resolve' => function ($parent, $args, $context) {
-        return $this->queryResolvers['Product']->resolve();
-        }
-        ],
-        ],
+            'name' => 'Query',
+            'fields' => [
+                'categories' => [
+                    'type' => Type::listOf($categoryObjectType),
+                    'resolve' => function ($parent, $args, $context) {
+                        
+                        return $this->queryResolvers['Category']->resolve();
+                    }
+                ],
+                'products' => [
+                    'type' => Type::listOf($productObjectType),
+                    'resolve' => function ($parent, $args, $context) {
+                        return $this->queryResolvers['Product']->resolve();
+                    }
+                ],
+            ],
         ]);
     }
     public function getMutationType()
     {
-    $newMutationType = new MutationType($this->mutationResolvers);
+    $newMutationType = new OrderMutationType($this->mutationResolvers);
     return $newMutationType->getType();
     }
 

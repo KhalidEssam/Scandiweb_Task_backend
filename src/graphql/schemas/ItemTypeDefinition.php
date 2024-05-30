@@ -7,15 +7,10 @@ use GraphQL\Type\Definition\Type;
 
 class ItemType extends BaseType
 {
-    public function __construct()
+    
+    public function __construct($fields)
     {
         $name = 'Item';
-        $fields = [
-            'id' => Type::string(),
-            'displayValue' => Type::string(),
-            'value' => Type::string(),
-        ];
-
         parent::__construct($name, $fields);
     }
 }
