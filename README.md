@@ -1,6 +1,6 @@
 # E-commerce Backend
 
-This is the backend for the E-commerce application, built with PHP, using a GraphQL endpoint, Doctrine ORM, and dotenv for environment configuration.
+This is the backend for the E-commerce application, built with PHP, using a GraphQL endpoint located at (src/graphql.php), Doctrine ORM, and dotenv for environment configuration.
 
 ## Requirements
 
